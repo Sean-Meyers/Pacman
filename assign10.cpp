@@ -11,6 +11,9 @@
 #include <string>
 #define _USE_MATH_DEFINES
 #include <math.h>
+
+#define FPS 180
+
 using namespace std;
 
 static bool replay = false; //check if starts a new game
@@ -409,6 +412,9 @@ void welcomeScreen(){
 
 //Method to display the screen and its elements
 void display(){
+
+	Sleep(1000 / FPS);
+
 	if (points == 1){
 		over = false;
 	}
@@ -448,7 +454,6 @@ void reshape(int w, int h){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
-
 
 //Main functions that controls the running of the game
 int main(int argc, char** argv){

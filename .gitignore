@@ -1,0 +1,9 @@
+.vs
+.vscode
+*.obj
+*.pdb
+*.sln
+*.vcxproj
+*.filters
+*.user
+x64
