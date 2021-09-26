@@ -16,6 +16,8 @@
 
 using namespace std;
 
+//TODO: Can declare a variable which, when true, prevents the monsters from being drawn.
+//TODO: One way of allowing monsters to get duplicated may be to have a variable length array that stores the coordinate/direction arrays of all the monsters, and each time a monster is to be updated, it make a copy of a template, and stores it in the monsters array. May also need to add a 4th element to the monster arrays that denote whether the monster is dead or not.
 static bool replay = false; //check if starts a new game
 static bool over = true; //check for the game to be over
 static float squareSize = 50.0; //size of one square on the game
@@ -300,6 +302,7 @@ void keyOperations(){
 }
 
 //Method to check if the game is over
+//TODO: Fix this so that Pacman murderizes ghosts and not the other way around.
 void gameOver(){
 	int pacmanX = (int)(1.5 + xIncrement);
 	int pacmanY = (int)(1.5 + yIncrement);
@@ -311,8 +314,11 @@ void gameOver(){
 	int monster3Y = (int)(monster3[1]);
 	int monster4X = (int)(monster4[0]);
 	int monster4Y = (int)(monster4[1]);
+#if true
+#else
 	if (pacmanX == monster1X && pacmanY == monster1Y){
-		over = true;
+		//over = true;
+		//TODO: Can set a avriable here, which prevents the mob from being drawn.
 	}
 	if (pacmanX == monster2X && pacmanY == monster2Y){
 		over = true;
@@ -323,6 +329,7 @@ void gameOver(){
 	if (pacmanX == monster4X && pacmanY == monster4Y){
 		over = true;
 	}
+#endif // true
 	if (points == 106){
 		over = true;
 	}
@@ -430,6 +437,8 @@ void display(){
 			updateMonster(monster2, 2);
 			updateMonster(monster3, 3);
 			updateMonster(monster4, 4);
+			//TODO: Can make it so that the mobs don't get drawn after colliding with vaxman using a conditional statement here.
+			//Note: May also need to stop the mob from updating for collision detection and stuff to stop.
 			drawMonster(monster1[0], monster1[1], 0.0, 1.0, 1.0); //cyan
 			drawMonster(monster2[0], monster2[1], 1.0, 0.0, 0.0); //red
 			drawMonster(monster3[0], monster3[1], 1.0, 0.0, 0.6); //magenta
